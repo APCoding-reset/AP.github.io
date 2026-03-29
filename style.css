@@ -22,22 +22,14 @@ body {
   color: var(--dark);
   font-family: var(--font-body);
   font-weight: 300;
-  font-size: 18px; /* ← BASE FONT SIZE (was 16px default) — increase this to make everything bigger */
+  font-size: 18px;
   line-height: 1.7;
   overflow-x: hidden;
 }
 
-/* ── PAGE SWITCHING (desktop only) ──
-   Each "page" is a div. Only the one with
-   class "active" is visible on desktop.
-   On mobile all pages show at once (see media query). */
-.page {
-  display: none;
-}
-
-.page.active {
-  display: block;
-}
+/* ── PAGE SWITCHING ── */
+.page { display: none; }
+.page.active { display: block; }
 
 
 /* ── NAV ── */
@@ -87,7 +79,6 @@ nav {
   font-size: 13px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  transition: color 0.2s;
   padding-bottom: 4px;
   border-bottom: 2px solid transparent;
   transition: color 0.2s, border-color 0.2s;
@@ -95,7 +86,6 @@ nav {
 
 .nav-links a:hover { color: var(--dark); }
 
-/* Active nav item gets an underline */
 .nav-links a.active {
   color: var(--dark);
   border-bottom: 2px solid var(--sage);
@@ -218,10 +208,6 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-display);
-  font-size: 18px;
-  color: var(--muted);
-  font-style: italic;
   overflow: hidden;
   position: relative;
 }
@@ -276,9 +262,9 @@ section { padding: 100px 5%; }
 
 .section-sub {
   color: var(--muted);
-  max-width: 520px;
+  max-width: 560px;
   font-size: 17px;
-  margin-bottom: 56px;
+  margin-bottom: 48px;
   line-height: 1.9;
 }
 
@@ -429,10 +415,6 @@ section { padding: 100px 5%; }
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--muted);
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 18px;
   overflow: hidden;
 }
 
@@ -448,7 +430,6 @@ section { padding: 100px 5%; }
 
 /* ── TESTIMONIALS ── */
 #testimonials { background: var(--dark); }
-
 #testimonials .section-label { color: var(--warm); }
 #testimonials .section-title { color: var(--cream); }
 
@@ -487,34 +468,84 @@ section { padding: 100px 5%; }
   color: #5A5048;
 }
 
-/* ── CONTACT ── */
-#contact {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: start;
+/* ── BOOKING PAGE ── */
+#booking {
+  padding-top: 120px;
+  padding-bottom: 80px;
 }
 
-.contact-details { margin-top: 36px; display: flex; flex-direction: column; gap: 20px; }
+.booking-header {
+  max-width: 600px;
+  margin-bottom: 48px;
+}
 
-.contact-item { display: flex; gap: 16px; align-items: flex-start; }
-
-.contact-icon {
-  width: 44px; height: 44px;
+/* Info strip — 4 columns across the top */
+.booking-info-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 48px;
+  padding: 28px 32px;
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px;
+  border-radius: 6px;
+}
+
+.booking-info-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.booking-info-icon {
+  font-size: 20px;
   flex-shrink: 0;
+  margin-top: 2px;
 }
 
-.contact-item-label {
-  font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
-  color: var(--muted); margin-bottom: 3px;
+.booking-info-label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 3px;
 }
 
-.contact-item-val { font-size: 16px; color: var(--dark); }
+.booking-info-val {
+  font-size: 14px;
+  color: var(--dark);
+  line-height: 1.4;
+}
+
+/* The iframe wrapper */
+.calendar-embed-wrap {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: white;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+}
+
+.calendar-embed-wrap iframe {
+  display: block; /* removes inline gap below iframe */
+}
+
+/* Fallback link below calendar */
+.calendar-fallback {
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.calendar-fallback a {
+  color: var(--sage);
+  text-decoration: none;
+  border-bottom: 1px solid var(--sage);
+  transition: opacity 0.2s;
+}
+
+.calendar-fallback a:hover { opacity: 0.7; }
 
 /* ── FOOTER ── */
 footer {
@@ -542,7 +573,7 @@ footer {
 .footer-links a { color: #6A6055; text-decoration: none; transition: color 0.2s; }
 .footer-links a:hover { color: var(--cream); }
 
-/* ── FADE-IN ANIMATION ── */
+/* ── FADE-IN ── */
 .fade-in {
   opacity: 0;
   transform: translateY(24px);
@@ -551,25 +582,18 @@ footer {
 
 .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-/* ── MOBILE RESPONSIVE ──
-   On mobile: show ALL pages at once (normal scroll),
-   hide the desktop page-switching behaviour. */
+/* ── MOBILE ── */
 @media (max-width: 768px) {
 
   /* Show all pages stacked on mobile */
-  .page {
-    display: block !important;
-  }
+  .page { display: block !important; }
 
-  /* Hide active underline indicator on mobile nav */
-  .nav-links a.active {
-    border-bottom: none;
-  }
+  .nav-links a.active { border-bottom: none; }
 
   #hero { grid-template-columns: 1fr; padding-top: 110px; text-align: center; }
   .hero-image { display: none; }
   .btn-group { justify-content: center; }
-  #what, #about, #contact, .benefits-intro { grid-template-columns: 1fr; gap: 40px; }
+  #what, #about, .benefits-intro { grid-template-columns: 1fr; gap: 40px; }
   .about-img-wrap { display: none; }
   .nav-links { display: none; }
   .hamburger { display: flex; }
@@ -582,5 +606,22 @@ footer {
     padding: 20px 5%;
     border-bottom: 1px solid var(--border);
     gap: 20px;
+  }
+
+  /* Stack info strip vertically on mobile */
+  .booking-info-strip {
+    grid-template-columns: 1fr 1fr;
+    padding: 20px;
+  }
+
+  /* Make iframe shorter on mobile */
+  .calendar-embed-wrap iframe {
+    height: 500px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .booking-info-strip {
+    grid-template-columns: 1fr;
   }
 }

@@ -17,16 +17,16 @@ function showPage(pageId, clickedLink) {
   // Show the selected page
   document.getElementById('page-' + pageId).classList.add('active');
 
-  // Update active nav link highlight
+  // Remove active highlight from all nav links
   document.querySelectorAll('.nav-item').forEach(function(link) {
     link.classList.remove('active');
   });
 
-  // Highlight the clicked link (if one was passed in)
+  // Highlight the clicked nav link if one was passed in
   if (clickedLink && clickedLink.classList.contains('nav-item')) {
     clickedLink.classList.add('active');
   } else {
-    // If called from a button (not nav), find and highlight the matching nav item
+    // Called from a button — find the matching nav item and highlight it
     document.querySelectorAll('.nav-item').forEach(function(link) {
       if (link.getAttribute('onclick') && link.getAttribute('onclick').includes(pageId)) {
         link.classList.add('active');
@@ -34,10 +34,10 @@ function showPage(pageId, clickedLink) {
     });
   }
 
-  // Scroll to top of page when switching
+  // Scroll to top smoothly when switching pages
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  // Re-trigger fade-in animations for the new page
+  // Re-trigger fade-in animations for newly visible page
   document.querySelectorAll('#page-' + pageId + ' .fade-in').forEach(function(el) {
     el.classList.remove('visible');
     setTimeout(function() {

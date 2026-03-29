@@ -42,7 +42,7 @@
         </p>
         <p class="hero-by">offered by Eva Pietrzak</p>
         <div class="btn-group">
-          <a href="https://calendar.app.google/1b7ydFKeAQPHbRA1A" target="_blank" class="btn btn-primary">Book a Session</a>
+          <a href="#" class="btn btn-primary" onclick="showPage('book', null); return false;">Book a Session</a>
           <a href="#" class="btn btn-ghost" onclick="showPage('about', null); return false;">Learn More</a>
         </div>
       </div>
@@ -131,7 +131,7 @@
         <p style="color:var(--muted);font-size:17px;line-height:1.9;margin-bottom:36px">
           Whether you're dealing with chronic tension, low energy, or simply want to invest in your well-being, Eva provides a calm and professional space to reset.
         </p>
-        <a href="https://calendar.app.google/1b7ydFKeAQPHbRA1A" target="_blank" class="btn btn-primary">Book with Eva</a>
+        <a href="#" class="btn btn-primary" onclick="showPage('book', null); return false;">Book with Eva</a>
       </div>
     </section>
 
@@ -154,44 +154,72 @@
 
   <!-- ================================
        PAGE 3: BOOK
-       Contact + Booking
+       Embedded Google Appointment Schedule
        ================================ -->
   <div id="page-book" class="page">
 
-    <section id="contact">
-      <div class="contact-info">
-        <p class="section-label">Get In Touch</p>
+    <section id="booking">
+
+      <!-- Header -->
+      <div class="booking-header">
+        <p class="section-label">Schedule Online</p>
         <h2 class="section-title">Book your<br><em>session</em></h2>
-        <p class="section-sub">Choose a time that works for you — Eva will confirm within 24 hours.</p>
-        <div class="contact-details">
-          <div class="contact-item">
-            <div class="contact-icon">📍</div>
-            <div>
-              <p class="contact-item-label">Location</p>
-              <p class="contact-item-val">Westmont, IL — address shared on booking</p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">📞</div>
-            <div>
-              <p class="contact-item-label">Phone</p>
-              <p class="contact-item-val">Add your number here</p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">🕐</div>
-            <div>
-              <p class="contact-item-label">Hours</p>
-              <p class="contact-item-val">Mon–Sat: 9am – 7pm · By appointment</p>
-            </div>
+        <p class="section-sub">
+          Pick a date and time that works for you. Eva will receive your booking instantly and you'll get a confirmation email right away.
+        </p>
+      </div>
+
+      <!-- Info strip -->
+      <div class="booking-info-strip">
+        <div class="booking-info-item">
+          <span class="booking-info-icon">📍</span>
+          <div>
+            <p class="booking-info-label">Location</p>
+            <p class="booking-info-val">Westmont, IL — address shared on booking</p>
           </div>
         </div>
-        <a href="https://calendar.app.google/1b7ydFKeAQPHbRA1A" target="_blank" class="btn btn-primary" style="margin-top:36px;display:inline-block;">
-          Book a Session
-        </a>
+        <div class="booking-info-item">
+          <span class="booking-info-icon">📞</span>
+          <div>
+            <p class="booking-info-label">Phone</p>
+            <p class="booking-info-val">Add your number here</p>
+          </div>
+        </div>
+        <div class="booking-info-item">
+          <span class="booking-info-icon">🕐</span>
+          <div>
+            <p class="booking-info-label">Hours</p>
+            <p class="booking-info-val">Mon–Sat: 9am – 7pm</p>
+          </div>
+        </div>
+        <div class="booking-info-item">
+          <span class="booking-info-icon">⏱</span>
+          <div>
+            <p class="booking-info-label">Session Length</p>
+            <p class="booking-info-val">60 minutes per session</p>
+          </div>
+        </div>
       </div>
-    </section>
 
+      <!-- Embedded Google Booking Calendar -->
+      <div class="calendar-embed-wrap">
+        <iframe
+          src="https://calendar.app.google/1b7ydFKeAQPHbRA1A"
+          width="100%"
+          height="750"
+          frameborder="0"
+          scrolling="yes"
+          title="Book a session with Eva Pietrzak">
+        </iframe>
+      </div>
+
+      <!-- Fallback link in case iframe is blocked -->
+      <p class="calendar-fallback">
+        Having trouble viewing the calendar?
+        <a href="https://calendar.app.google/1b7ydFKeAQPHbRA1A" target="_blank">Open booking page directly →</a>
+      </p>
+
+    </section>
   </div>
 
 
