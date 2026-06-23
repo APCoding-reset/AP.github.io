@@ -610,16 +610,34 @@ footer {
     gap: 20px;
   }
 
+  /* Stack testimonials vertically on mobile */
+  .testimonials-grid { grid-template-columns: 1fr; }
+
   /* Stack info strip vertically on mobile */
   .booking-info-strip {
     grid-template-columns: 1fr 1fr;
     padding: 20px;
   }
 
-  /* Make iframe shorter on mobile */
-  .calendar-embed-wrap iframe {
-    height: 500px !important;
-  }
+  /* Hide iframe on mobile — show tap-to-book button instead */
+  .calendar-embed-wrap { display: none; }
+  .calendar-fallback { display: none; }
+  .mobile-book-cta { display: flex; }
+}
+
+/* Hidden on desktop, shown on mobile */
+.mobile-book-cta {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+  padding: 48px 0 24px;
+}
+
+.mobile-book-cta p {
+  color: var(--muted);
+  font-size: 18px;
 }
 
 @media (max-width: 480px) {
